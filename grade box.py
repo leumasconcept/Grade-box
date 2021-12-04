@@ -2,18 +2,18 @@ from tkinter import *
 from tkinter import messagebox
 
 root = Tk()
-root.geometry("550x250")        # this is the size of my interface
-root.title("GRADE BOX")          # the name of my project
+root.geometry("550x250")        # the interface size
+root.title("GRADE BOX")          # project namee
 root.config(bg="gray")
 
 
-def do_nothing():            # this button does nothing when clicked on
+def do_nothing():            # nothing when clicked on
     file_win = Toplevel(root)
     button = Button(file_win, text="Do nothing button")
     button.pack()
 
 
-menu = Menu(root)        # this is my menu option
+menu = Menu(root)        # menu option
 file_menu = Menu(menu, tearoff=0)
 file_menu.add_command(label="New", command=do_nothing)
 file_menu.add_command(label="Open", command=do_nothing)
@@ -37,8 +37,8 @@ help_menu.add_command(label="Help Index", command=do_nothing)
 help_menu.add_command(label="About...", command=do_nothing)
 menu.add_cascade(label="Help", menu=help_menu)
 
-course = [StringVar(), StringVar(), StringVar()]         # this is where user input is entered
-course[0].set("Name: " + course[0].get())                # this is used in getting values from user's input
+course = [StringVar(), StringVar(), StringVar()]         # user input is entered
+course[0].set("Name: " + course[0].get())                # getting values from user's input
 course[1].set("Department: " + course[1].get())
 course[2].set("Course: " + course[2].get())
 seek = StringVar()
@@ -59,7 +59,7 @@ def clear():         # the clear button area
     result4.delete(0, END)
 
 
-def save():          # the save button area
+def save():          # save button area
     rest = course[0].get() + "\t" + course[1].get() + "\t" + course[2].get() + "\n"
     file = grade[0].get() + "\n" + grade[1].get() + "\n" + grade[2].get() + "\n" + grade[3].get() + "\n"
     with open("text.txt", "a") as x:
@@ -71,7 +71,7 @@ def save():          # the save button area
             return x.write(rest)
 
 
-def search():            # the search button area
+def search():            # search button area
     with open("text.txt") as f:
         if seek.get() in f.read():
             messagebox.showinfo("Outcome", "Name found")
@@ -83,7 +83,7 @@ score1, score2, score3, score4 = (IntVar(), IntVar(), IntVar(), IntVar())
 grade = (StringVar(), StringVar(), StringVar(), StringVar())
 
 
-def calculate(var1, var2, var3, var4):           # this is used in calculating user result
+def calculate(var1, var2, var3, var4):           # calculating user result
     data = [var1, var2, var3, var4]
     for i in range(len(data)):
         if data[i] <= 30:
